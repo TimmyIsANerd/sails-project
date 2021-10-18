@@ -1,0 +1,22 @@
+<nav aria-label="breadcrumb" class="m-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/articles/list">Articles</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add</li>
+    </ol>
+</nav>
+<h1 class="display-4">Add Article</h1>
+
+<div class="container-fluid">
+    <form action="post" action="/articles/create">
+        <div class="form-group m-3">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control">
+        </div>
+        <div class="form-group m-3">
+            <label for="body">Body</label>
+            <input type="text" name="body" class="form-control">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-secondary m-3">
+    </form>
+</div>
+
