@@ -18,7 +18,8 @@ module.exports = {
     addArticle:(req,res)=>{
         return res.view('add');
     },
-    create:(req,res)=>{
+    // My Controller for the POST Request
+    create: async (req,res)=>{
         const { title,body } = req.body;
         
         Articles.create({
@@ -30,6 +31,44 @@ module.exports = {
             }
             res.redirect('/articles/list');
         });
+    },
+    // Delete Blog
+    delete: (req,res) =>{
+        Articles.destroy({id:req.params.id}).exec((err)=>{
+            if(err){
+                res.send(500, {error:'Database Error'})
+            }
+
+            res.redirect('/articles/list')
+        });
+
+        return false;
+    },
+    // Edit Blog
+    edit: (req,res) =>{
+        Articles.findOne({id:req.params.id}).exec((err,article)=>{
+            if(err){
+                res.send(500, {error:'Database Error'});
+            }
+
+            return res.view('edit',{article});
+        })
+    },
+    // Update
+    update:(req,res)=>{
+        const { title,body } = req.body;
+        
+        Articles.update({id:req.params.id},{
+            title,
+            body
+        }).exec((err)=>{
+            if (err){
+                res.send(500, {error:'Database Error'});
+            }
+            res.redirect('/articles/list');
+        });
+
+        return false;
     }
 };
 
