@@ -19,9 +19,20 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-
-
+  'get /': { view: 'pages/homepage' },
+  'get /articles/list': {
+    controller : 'Articles',
+    action: 'loadArticleList'
+  },
+  'get /articles/add' : {
+    controller:'Articles',
+    action: 'addArticle'
+  },
+  'post /articles/create' : {
+    controller:'ArticlesController',
+    action:'create'
+  }
+  
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
