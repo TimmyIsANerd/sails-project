@@ -11,7 +11,7 @@ module.exports = {
     title:{
       type:'string'
     },
-    Body:{
+    body:{
       type:'string'
     }
   }
